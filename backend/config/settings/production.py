@@ -20,10 +20,16 @@ else:
         }
     }
 
-DATABASES["default"]["OPTIONS"] = {
-    "charset": "utf8mb4",
-    "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
-}
+# DATABASES["default"]["OPTIONS"] = {
+#     "charset": "utf8mb4",
+#     "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+# }
+
+if DATABASES["default"]["ENGINE"].endswith("mysql"):
+    DATABASES["default"]["OPTIONS"] = {
+        "charset": "utf8mb4",
+        "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+    }
 
 # Static files production serving storage (WhiteNoise)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
