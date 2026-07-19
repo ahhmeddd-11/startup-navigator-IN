@@ -1,0 +1,128 @@
+Phase 1: Planning the Product
+
+
+Phase 1 focused on laying a strong foundation for Startup Navigator before writing any code. The goal was to clearly define the product vision, identify the problems faced by Indian entrepreneurs, and design a solution that would genuinely address those challenges. We researched the startup ecosystem, studied user pain points, and outlined the platform's purpose and long-term goals.
+
+During this phase, we created the product vision, mission, problem statement, target user personas, user journeys, and overall product philosophy. We also planned the information architecture, prioritized features for the MVP, and prepared a detailed Product Requirements Document (PRD). The scope of the project was finalized, key decisions were locked, and a clear development roadmap was established, ensuring that all subsequent phases followed a structured and well-documented plan.
+
+
+Prompts I would use for the Phase 1:
+
+Prompt 1:
+Hi! I want you to act as my technical co-founder and CTO for this project.
+
+We're going to build a serious portfolio project together, not just a simple assignment. I want you to think like a Senior Product Manager, Software Architect, Full Stack Engineer, AI Engineer, and Technical Mentor throughout this conversation.
+
+The project is called Startup Navigator.
+
+The idea is to build an AI-powered web platform that helps entrepreneurs, especially in India, navigate the complete startup journey. It should help users understand company registration, Startup India, DPIIT recognition, government schemes, funding options, legal compliance, taxation, branding, hiring, marketing, AI tools, and business growth.
+
+This project is for an AI Web Developer hiring assignment, but I don't want it to look like a hiring assignment. I want it to look like a real SaaS product that someone could actually launch.
+
+The recruiter will evaluate things like product thinking, architecture, UI/UX, AI integration, documentation, deployment, code quality, testing, and prompt engineering. So I want us to approach this like a professional software team would.
+
+Before we write a single line of code, I want us to complete the entire planning phase properly.
+
+Help me design the product from scratch.
+
+I want us to discuss and finalize:
+
+- Product vision
+- Mission statement
+- Problem statement
+- Target audience
+- User personas
+- User journeys
+- Pain points
+- Product philosophy
+- Value proposition
+- Core features
+- MVP features
+- Nice-to-have features
+- Information architecture
+- Navigation structure
+- Functional requirements
+- Non-functional requirements
+- Acceptance criteria
+- Product Requirements Document (PRD)
+
+Don't just generate documents. Challenge my ideas if you think there's a better approach. Explain why certain decisions are better than others. Think about scalability, maintainability, and real-world usability.
+
+I also want your recommendations whenever you think something should be changed, simplified, or improved.
+
+For AI, I don't want the application to become just another ChatGPT wrapper. AI should enhance the experience, not define it. The platform should still be useful even if no AI API key is available.
+
+Keep this in mind while making product decisions.
+
+At the end of this phase, summarize everything we've finalized and list the important decisions that should remain locked for future phases.
+
+Let's begin with Product Discovery and work through each topic step by step instead of rushing to the end.
+
+
+Prompt 2:
+Let's continue building Startup Navigator.
+
+Everything we finalized in the previous phase is approved and should be treated as the source of truth. Don't redesign previously approved decisions unless there's a significantly better engineering reason.
+
+Before moving forward, briefly recap the important decisions we made in Phase 1 so we maintain continuity.
+
+Now let's begin the next phase of the project.
+
+I want us to design the complete software architecture before writing code.
+
+Please help me create a production-ready architecture for this application.
+
+This should include:
+
+- Overall system architecture
+- Frontend architecture
+- Backend architecture
+- Database design
+- Entity Relationship Diagram (ERD)
+- API planning
+- Authentication flow
+- User roles and permissions
+- Folder structure
+- AI service architecture
+- Knowledge base architecture
+- Search architecture
+- Deployment architecture
+- Security considerations
+- Logging strategy
+- Error handling strategy
+- Testing strategy
+- Scalability considerations
+
+The technology stack is:
+
+Frontend:
+- Next.js
+- Tailwind CSS
+- shadcn/ui
+- Framer Motion
+
+Backend:
+- Django
+- Django REST Framework
+
+Database:
+- MySQL
+
+Authentication:
+- JWT
+
+Deployment:
+- Vercel (Frontend)
+- Render (Backend)
+- Railway (Database)
+
+For AI, continue following the knowledge-first approach we agreed on. The application should search its own knowledge base first, use Gemini only when available, and gracefully fall back to curated guidance if AI isn't available.
+
+Continue thinking like my CTO. Explain your reasoning, recommend improvements wherever appropriate, and help me make engineering decisions that would impress an experienced reviewer.
+
+Don't generate implementation code yet. Focus entirely on architecture, design, and planning until everything is finalized.
+
+
+
+
+Note: This phase primarily focused on research, planning, and defining the product requirements. Since no development work had started yet, only a few additional prompts were used to refine ideas, improve documentation, validate the project scope, and finalize the overall product vision before moving to implementation.
