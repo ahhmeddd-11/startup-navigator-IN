@@ -20,7 +20,7 @@ max_requests_jitter = 50
 worker_class = "gthread"
 
 # Connection timeout (seconds)
-timeout = 30
+timeout = 60
 
 # Logging configurations
 loglevel = os.environ.get("LOG_LEVEL", "info")
