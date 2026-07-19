@@ -29,7 +29,8 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DJANGO_DEBUG")
 
-ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS")
+# ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS")
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
 
 # Custom user model — must be declared before any app that imports it
 AUTH_USER_MODEL = "users.User"
