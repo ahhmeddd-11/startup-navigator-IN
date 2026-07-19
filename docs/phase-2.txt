@@ -189,3 +189,8 @@ Do NOT generate implementation code.
 Only refine and perfect the architecture until it resembles what would be expected from a production-ready SaaS application built by an experienced engineering team.
 
 The final result should be a polished Software Design Document that will act as the single source of truth for implementation in future phases.
+
+
+
+
+Note: While the two prompts above capture the core system design and architecture work completed during this phase, several additional prompts were used to refine the application architecture, improve database design, clarify implementation decisions, and make adjustments based on evolving project requirements before development began.
