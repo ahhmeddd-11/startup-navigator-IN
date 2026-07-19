@@ -59,6 +59,13 @@ Unless explicitly authorized in writing by the author:
 
 - React → Axios → Django REST API → Services → PostgreSQL → Gemini API
 
+## 🌐 Live Demo
+
+- **Frontend (Vercel):** https://startup-navigator-in.vercel.app
+- **Backend API (Render):** https://startup-navigator-in.onrender.com
+- **API Documentation:** https://startup-navigator-in.onrender.com/api/docs/
+- **GitHub Repository:** https://github.com/ahhmeddd-11/startup-navigator-IN
+
 ## 🔐 Security
 
 - JWT Authentication
@@ -67,31 +74,6 @@ Unless explicitly authorized in writing by the author:
 - Environment Variables
 - Input Validation
 - CORS Protection
-
-## 🚀 Installation
-
-- Clone repository
-- Install backend requirements
-- Run migrations
-- Start Django server
-- Install frontend packages
-- Run Vite
-
-## 🌐 Environment Variables
-
-- DJANGO_SECRET_KEY
-- DATABASE_URL
-- JWT_SECRET_KEY
-- GEMINI_API_KEY
-- GEMINI_MODEL
-- VITE_API_URL
-
-## 📂 Project Structure
-
-- frontend/
-- backend/
-- docs/
-- README.md
 
 ## 🤖 AI Workflow
 
@@ -134,110 +116,6 @@ Unless explicitly authorized in writing by the author:
 - Recommendations
 - AI
 - Admin
-
-## 🧪 Development Highlights
-- Development milestone 1: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 2: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 3: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 4: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 5: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 6: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 7: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 8: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 9: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 10: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 11: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 12: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 13: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 14: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 15: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 16: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 17: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 18: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 19: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 20: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 21: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 22: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 23: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 24: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 25: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 26: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 27: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 28: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 29: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 30: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 31: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 32: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 33: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 34: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 35: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 36: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 37: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 38: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 39: Designed, implemented, tested, and refined production-quality functionality.
-- Development milestone 40: Designed, implemented, tested, and refined production-quality functionality.
-
-## 📈 Planned Enhancements
-- Enhancement 1: Future improvement placeholder for continued project evolution.
-- Enhancement 2: Future improvement placeholder for continued project evolution.
-- Enhancement 3: Future improvement placeholder for continued project evolution.
-- Enhancement 4: Future improvement placeholder for continued project evolution.
-- Enhancement 5: Future improvement placeholder for continued project evolution.
-- Enhancement 6: Future improvement placeholder for continued project evolution.
-- Enhancement 7: Future improvement placeholder for continued project evolution.
-- Enhancement 8: Future improvement placeholder for continued project evolution.
-- Enhancement 9: Future improvement placeholder for continued project evolution.
-- Enhancement 10: Future improvement placeholder for continued project evolution.
-- Enhancement 11: Future improvement placeholder for continued project evolution.
-- Enhancement 12: Future improvement placeholder for continued project evolution.
-- Enhancement 13: Future improvement placeholder for continued project evolution.
-- Enhancement 14: Future improvement placeholder for continued project evolution.
-- Enhancement 15: Future improvement placeholder for continued project evolution.
-- Enhancement 16: Future improvement placeholder for continued project evolution.
-- Enhancement 17: Future improvement placeholder for continued project evolution.
-- Enhancement 18: Future improvement placeholder for continued project evolution.
-- Enhancement 19: Future improvement placeholder for continued project evolution.
-- Enhancement 20: Future improvement placeholder for continued project evolution.
-- Enhancement 21: Future improvement placeholder for continued project evolution.
-- Enhancement 22: Future improvement placeholder for continued project evolution.
-- Enhancement 23: Future improvement placeholder for continued project evolution.
-- Enhancement 24: Future improvement placeholder for continued project evolution.
-- Enhancement 25: Future improvement placeholder for continued project evolution.
-- Enhancement 26: Future improvement placeholder for continued project evolution.
-- Enhancement 27: Future improvement placeholder for continued project evolution.
-- Enhancement 28: Future improvement placeholder for continued project evolution.
-- Enhancement 29: Future improvement placeholder for continued project evolution.
-- Enhancement 30: Future improvement placeholder for continued project evolution.
-- Enhancement 31: Future improvement placeholder for continued project evolution.
-- Enhancement 32: Future improvement placeholder for continued project evolution.
-- Enhancement 33: Future improvement placeholder for continued project evolution.
-- Enhancement 34: Future improvement placeholder for continued project evolution.
-- Enhancement 35: Future improvement placeholder for continued project evolution.
-- Enhancement 36: Future improvement placeholder for continued project evolution.
-- Enhancement 37: Future improvement placeholder for continued project evolution.
-- Enhancement 38: Future improvement placeholder for continued project evolution.
-- Enhancement 39: Future improvement placeholder for continued project evolution.
-- Enhancement 40: Future improvement placeholder for continued project evolution.
-- Enhancement 41: Future improvement placeholder for continued project evolution.
-- Enhancement 42: Future improvement placeholder for continued project evolution.
-- Enhancement 43: Future improvement placeholder for continued project evolution.
-- Enhancement 44: Future improvement placeholder for continued project evolution.
-- Enhancement 45: Future improvement placeholder for continued project evolution.
-- Enhancement 46: Future improvement placeholder for continued project evolution.
-- Enhancement 47: Future improvement placeholder for continued project evolution.
-- Enhancement 48: Future improvement placeholder for continued project evolution.
-- Enhancement 49: Future improvement placeholder for continued project evolution.
-- Enhancement 50: Future improvement placeholder for continued project evolution.
-- Enhancement 51: Future improvement placeholder for continued project evolution.
-- Enhancement 52: Future improvement placeholder for continued project evolution.
-- Enhancement 53: Future improvement placeholder for continued project evolution.
-- Enhancement 54: Future improvement placeholder for continued project evolution.
-- Enhancement 55: Future improvement placeholder for continued project evolution.
-- Enhancement 56: Future improvement placeholder for continued project evolution.
-- Enhancement 57: Future improvement placeholder for continued project evolution.
-- Enhancement 58: Future improvement placeholder for continued project evolution.
-- Enhancement 59: Future improvement placeholder for continued project evolution.
-- Enhancement 60: Future improvement placeholder for continued project evolution.
 
 ## 👨‍💻 Author
 
