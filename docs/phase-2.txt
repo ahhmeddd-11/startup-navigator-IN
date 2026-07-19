@@ -1,1 +1,191 @@
+Phase 2 – Software Architecture
 
+In Phase 2, we focused on designing the complete technical architecture of Startup Navigator before starting development. We defined the system architecture, backend and frontend structure, AI workflow, database schema, ER diagram, REST API design, authentication and authorization flow, project folder structure, security model, logging and monitoring strategy, and testing approach.
+
+We also finalized key architectural decisions, including an AI-optional design, layered backend architecture, standardized API responses, request tracing, and scalable project organization. By the end of this phase, we had a production-ready technical blueprint that serves as the foundation for implementing the application in the upcoming phases.
+
+
+Prompts I would use for the Phase 1:
+
+Prompt 1:
+
+You are a Principal Software Architect, Staff Backend Engineer, Senior Frontend Engineer, AI Systems Architect, and Technical Lead.
+
+We are continuing development of an existing project called Startup Navigator.
+
+Phase 1 has already been completed and is LOCKED.
+
+Do NOT redesign Phase 1.
+
+Project Overview
+
+Startup Navigator is an AI-powered SaaS platform focused exclusively on the Indian startup ecosystem.
+
+It helps founders navigate:
+
+• Company Registration
+• Startup India
+• DPIIT
+• MCA
+• GST
+• PAN/TAN
+• Udyam
+• Government Schemes
+• Funding
+• Compliance
+• Hiring
+• Branding
+• Marketing
+• AI Tools
+• Business Growth
+
+Product Philosophy
+
+The application should feel like:
+
+Perplexity + Notion + Startup India
+
+instead of
+
+CRUD + ChatGPT
+
+AI Philosophy
+
+AI is an enhancement, NOT the core dependency.
+
+Pipeline:
+
+User
+↓
+Knowledge Base Search
+↓
+Relevant Articles
+↓
+Relevant Resources
+↓
+Context Builder
+↓
+Gemini (Optional)
+↓
+Structured Response
+
+If Gemini is unavailable, the application MUST continue functioning using only the knowledge base while returning the exact same response structure.
+
+Technology Stack
+
+Frontend
+• Next.js
+• Tailwind CSS
+• shadcn/ui
+• Framer Motion
+
+Backend
+• Django
+• Django REST Framework
+
+Database
+• MySQL
+
+Authentication
+• JWT
+
+Objective
+
+Do NOT generate implementation code.
+
+This phase is DESIGN ONLY.
+
+I want an enterprise-grade Software Design Document.
+
+Think like you're preparing architecture for a production SaaS product that will later be implemented by an AI coding assistant.
+
+For every section:
+
+• Explain the reasoning.
+• Explain trade-offs.
+• Explain why this approach is better than common beginner implementations.
+• Use architecture diagrams wherever useful.
+• Use tables where appropriate.
+• Recommend improvements whenever you identify a better engineering decision.
+• Challenge weak ideas.
+• Think like a senior architect, not a code generator.
+
+Generate the following in order:
+
+1. High-Level System Architecture
+2. Request Lifecycle
+3. Layered Architecture
+4. Backend Architecture
+5. AI Service Layer
+6. Frontend Architecture
+7. Database Design
+8. ER Diagram
+9. REST API Design
+10. Authentication & Authorization Flow
+11. Project Folder Structure
+12. Security Architecture
+13. Logging & Monitoring
+14. Testing Strategy
+
+At the end of every section:
+
+• Give architectural recommendations.
+• Suggest improvements.
+• Explain future scalability.
+• Update a Phase Progress tracker.
+
+Do not rush.
+
+Produce the architecture exactly as if this were documentation for a real SaaS startup.
+
+
+Prompt 2:
+
+Now review the entire Phase 2 architecture as if you are conducting a Senior Staff Engineer design review at Google, Stripe, Vercel, or Microsoft.
+
+Critically analyze every architecture decision.
+
+Do NOT blindly accept previous choices.
+
+Instead:
+
+• Find weaknesses.
+• Recommend better alternatives.
+• Simplify overengineered sections.
+• Improve scalability.
+• Improve maintainability.
+• Improve security.
+• Improve developer experience.
+• Improve AI architecture.
+• Improve API design.
+• Improve database normalization.
+• Improve frontend architecture.
+• Improve folder organization.
+• Improve authentication.
+• Improve logging.
+• Improve testing.
+• Improve future extensibility.
+
+For every improvement:
+
+Explain:
+
+• Why the previous approach can be improved.
+• Why your recommendation is better.
+• Trade-offs.
+• Impact on implementation.
+
+Whenever appropriate:
+
+• Replace old architecture with a better one.
+• Update diagrams.
+• Update flowcharts.
+• Update tables.
+• Update API contracts.
+• Update folder structures.
+
+Do NOT generate implementation code.
+
+Only refine and perfect the architecture until it resembles what would be expected from a production-ready SaaS application built by an experienced engineering team.
+
+The final result should be a polished Software Design Document that will act as the single source of truth for implementation in future phases.
