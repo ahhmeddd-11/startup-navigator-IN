@@ -6,6 +6,8 @@ import type { Scheme } from "@/lib/content";
 
 interface SchemeCardProps {
   scheme: Scheme;
+  /** Optional callback fired when the user clicks the official site link. */
+  onView?: () => void;
 }
 
 function schemeStatusVariant(status: Scheme["status"]): "destructive" | "default" | "outline" {
@@ -18,7 +20,7 @@ function schemeStatusVariant(status: Scheme["status"]): "destructive" | "default
  * Reusable government scheme card used in both the public and app scheme list pages.
  * Renders eligibility, benefits, category badge, and an external link to the scheme website.
  */
-export function SchemeCard({ scheme }: SchemeCardProps) {
+export function SchemeCard({ scheme, onView }: SchemeCardProps) {
   return (
     <Card className="flex flex-col p-5">
       <div className="flex items-start justify-between gap-2">
@@ -58,7 +60,12 @@ export function SchemeCard({ scheme }: SchemeCardProps) {
           {scheme.category}
         </Badge>
         <Button size="sm" variant="outline" asChild>
-          <a href={scheme.website} target="_blank" rel="noreferrer noopener">
+          <a
+            href={scheme.website}
+            target="_blank"
+            rel="noreferrer noopener"
+            onClick={() => onView?.()}
+          >
             Official site <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
           </a>
         </Button>

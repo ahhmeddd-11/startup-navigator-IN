@@ -155,6 +155,9 @@ class RecentlyViewed(models.Model):
     CONTENT_TYPE_CHOICES = [
         ("resource", "Resource"),
         ("article", "Article"),
+        ("scheme", "Government Scheme"),
+        ("recommendations", "Recommendations Page"),
+        ("search", "Search Action"),
     ]
 
     user = models.ForeignKey(
@@ -177,6 +180,7 @@ class RecentlyViewed(models.Model):
         blank=True,
         related_name="views",
     )
+    metadata = models.JSONField(null=True, blank=True)
     viewed_at = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -190,12 +194,14 @@ class RecentlyViewed(models.Model):
             item_title = self.resource.title
         elif self.content_type == "article" and self.article:
             item_title = self.article.title
+        elif self.metadata and ("title" in self.metadata or "name" in self.metadata or "query" in self.metadata):
+            item_title = self.metadata.get("title") or self.metadata.get("name") or self.metadata.get("query")
         return f"{self.user.email} viewed {self.content_type}: {item_title}"
 
     @classmethod
-    def track_view(cls, user, content_type: str, instance) -> None:
+    def track_view(cls, user, content_type: str, instance=None, metadata=None) -> None:
         """
-        Records that a user viewed a resource or article.
+        Records that a user viewed a resource, article, scheme, recommendations page, or search query.
         Avoids duplicate consecutive entries and prunes old logs.
         """
         if not user or not user.is_authenticated:
@@ -206,19 +212,31 @@ class RecentlyViewed(models.Model):
 
         # Check for consecutive duplicate and update time instead of duplicating record
         if last_view and last_view.content_type == content_type:
-            if content_type == "resource" and last_view.resource_id == instance.id:
+            if content_type == "resource" and instance and last_view.resource_id == instance.id:
                 last_view.save()  # Triggers auto_now update
                 return
-            elif content_type == "article" and last_view.article_id == instance.id:
+            elif content_type == "article" and instance and last_view.article_id == instance.id:
                 last_view.save()  # Triggers auto_now update
+                return
+            elif content_type == "scheme" and metadata and last_view.metadata == metadata:
+                last_view.save()
+                return
+            elif content_type == "recommendations":
+                last_view.save()
+                return
+            elif content_type == "search" and metadata and last_view.metadata == metadata:
+                last_view.save()
                 return
 
         # Create new entry
         kwargs = {"user": user, "content_type": content_type}
-        if content_type == "resource":
+        if content_type == "resource" and instance:
             kwargs["resource"] = instance
-        else:
+        elif content_type == "article" and instance:
             kwargs["article"] = instance
+        
+        if metadata:
+            kwargs["metadata"] = metadata
 
         cls.objects.create(**kwargs)
 

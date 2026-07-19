@@ -548,6 +548,30 @@ class RecentlyViewedListView(generics.ListAPIView):
             data=serializer.data,
         )
 
+    def post(self, request, *args, **kwargs):
+        """
+        POST /api/users/history/ - record a history item from the frontend.
+        """
+        content_type = request.data.get("content_type")
+        metadata = request.data.get("metadata")
+
+        if content_type not in ["scheme", "recommendations", "search"]:
+            return api_response(
+                success=False,
+                message="Invalid content type for custom history.",
+                status_code=400
+            )
+
+        RecentlyViewed.track_view(
+            user=request.user,
+            content_type=content_type,
+            metadata=metadata
+        )
+        return api_response(
+            success=True,
+            message="History entry recorded successfully."
+        )
+
 
 class DashboardView(APIView):
     """

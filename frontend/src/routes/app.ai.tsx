@@ -132,6 +132,22 @@ function AiPage() {
     },
   });
 
+  const clearConversationsMutation = useMutation({
+    mutationFn: async () => {
+      await api.delete("/api/ai/conversations/");
+    },
+    onSuccess: () => {
+      toast.success("All conversations cleared.");
+      void queryClient.invalidateQueries({ queryKey: ["ai-conversations"] });
+      void queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+      setActiveConvId(null);
+      setMsgs([GREETING]);
+    },
+    onError: () => {
+      toast.error("Failed to clear conversations.");
+    },
+  });
+
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [msgs, thinking]);
@@ -183,9 +199,9 @@ function AiPage() {
   }
 
   return (
-    <div className="grid h-[calc(100dvh-3.5rem)] grid-cols-1 md:grid-cols-[240px_1fr]">
+    <div className="grid h-full grid-cols-1 md:grid-cols-[240px_1fr]">
       {/* Sidebar */}
-      <aside className="hidden border-r border-border bg-surface md:flex md:flex-col">
+      <aside className="hidden border-r border-border bg-surface md:flex md:flex-col min-h-0">
         <div className="p-3">
           <Button size="sm" className="w-full justify-start" variant="outline" onClick={startNewConversation}>
             <Plus className="mr-1.5 h-4 w-4" /> New conversation
@@ -244,15 +260,20 @@ function AiPage() {
             size="sm"
             variant="ghost"
             className="w-full justify-start text-muted-foreground"
-            onClick={startNewConversation}
+            disabled={clearConversationsMutation.isPending}
+            onClick={() => {
+              if (window.confirm("Are you sure you want to clear all conversations?")) {
+                clearConversationsMutation.mutate();
+              }
+            }}
           >
-            <Trash2 className="mr-1.5 h-4 w-4" /> Clear conversation
+            <Trash2 className="mr-1.5 h-4 w-4" /> Clear Conversations
           </Button>
         </div>
       </aside>
 
       {/* Chat panel */}
-      <div className="flex min-w-0 flex-col">
+      <div className="flex min-w-0 min-h-0 flex-col">
         <div className="flex items-center justify-between border-b border-border px-4 py-3">
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4" />

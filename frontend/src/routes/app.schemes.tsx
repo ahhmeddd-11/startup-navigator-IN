@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useSchemes } from "@/hooks/use-schemes";
 import { SchemeCard } from "@/components/shared/scheme-card";
+import { useEffect } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { api } from "@/lib/api";
 
 import { ErrorState } from "@/components/shared/error-state";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -44,7 +47,15 @@ function SchemeCardSkeleton() {
 }
 
 function SchemesPage() {
+  const queryClient = useQueryClient();
   const { data: schemes = [], isLoading, error, refetch } = useSchemes();
+
+  // Track that the user visited the Schemes page
+  useEffect(() => {
+    void api.post("/api/users/history/", { content_type: "scheme", metadata: { name: "Government Schemes Page" } })
+      .then(() => queryClient.invalidateQueries({ queryKey: ["user-history"] }))
+      .catch(() => {});
+  }, [queryClient]);
 
   return (
     <div className="container-page py-8">
@@ -65,7 +76,18 @@ function SchemesPage() {
           <ErrorState onRetry={() => refetch()} />
         )}
         {!isLoading && !error && schemes.map((scheme) => (
-          <SchemeCard key={scheme.slug} scheme={scheme} />
+          <SchemeCard
+            key={scheme.slug}
+            scheme={scheme}
+            onView={() => {
+              void api.post("/api/users/history/", {
+                content_type: "scheme",
+                metadata: { name: scheme.name, ministry: scheme.ministry, slug: scheme.slug },
+              })
+                .then(() => queryClient.invalidateQueries({ queryKey: ["user-history"] }))
+                .catch(() => {});
+            }}
+          />
         ))}
         {!isLoading && !error && schemes.length === 0 && (
           <EmptyState message="No schemes found." />

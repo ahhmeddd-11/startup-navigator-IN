@@ -227,6 +227,17 @@ class ConversationListView(generics.ListAPIView):
             data=serializer.data,
         )
 
+    def delete(self, request, *args, **kwargs):
+        """
+        DELETE /api/ai/conversations/
+        Delete all chat conversations for the authenticated user.
+        """
+        AIConversation.objects.filter(user=request.user).delete()
+        return api_response(
+            success=True,
+            message="All conversations cleared successfully."
+        )
+
 
 class ConversationDetailView(generics.RetrieveDestroyAPIView):
     """

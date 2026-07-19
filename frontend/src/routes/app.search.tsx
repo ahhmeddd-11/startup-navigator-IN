@@ -1,10 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { SearchInput } from "@/components/shared/search-input";
 import { useArticles } from "@/hooks/use-articles";
 import { useSchemes } from "@/hooks/use-schemes";
 import { useResources } from "@/hooks/use-resources";
+import { useQueryClient } from "@tanstack/react-query";
+import { api } from "@/lib/api";
 
 import { ErrorState } from "@/components/shared/error-state";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -15,6 +17,7 @@ export const Route = createFileRoute("/app/search")({
 });
 
 function SearchPage() {
+  const queryClient = useQueryClient();
   const { data: articles = [], isLoading: isLoadingArticles, error: errorArticles, refetch: refetchArticles } = useArticles();
   const { data: schemes = [], isLoading: isLoadingSchemes, error: errorSchemes, refetch: refetchSchemes } = useSchemes();
   const { data: resources = [], isLoading: isLoadingResources, error: errorResources, refetch: refetchResources } = useResources();
@@ -29,6 +32,27 @@ function SearchPage() {
   };
 
   const [query, setQuery] = useState("");
+
+  // Debounce search tracking — only record after user stops typing (1.5s) and query is >= 3 chars
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastTrackedQuery = useRef<string>("");
+
+  useEffect(() => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    const trimmed = query.trim();
+    if (trimmed.length < 3) return;
+    debounceRef.current = setTimeout(() => {
+      if (trimmed === lastTrackedQuery.current) return;
+      lastTrackedQuery.current = trimmed;
+      void api.post("/api/users/history/", { content_type: "search", metadata: { query: trimmed } })
+        .then(() => queryClient.invalidateQueries({ queryKey: ["user-history"] }))
+        .catch(() => {});
+    }, 1500);
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, [query, queryClient]);
+
   const results = useMemo(() => {
     const trimmedQuery = query.trim().toLowerCase();
     if (!trimmedQuery) return null;
@@ -71,27 +95,42 @@ function SearchPage() {
           <>
             <Section title={`Articles (${results.articles.length})`}>
               {results.articles.map((article) => (
-                <div key={article.slug} className="rounded-lg border border-border p-3">
-                  <Badge variant="outline" className="rounded-full">{article.category?.name}</Badge>
-                  <div className="mt-1 font-medium">{article.title}</div>
-                </div>
+                <Link key={article.slug} to="/app/articles/$slug" params={{ slug: article.slug }}>
+                  <div className="rounded-lg border border-border p-3 hover:bg-accent/40 transition-colors">
+                    <Badge variant="outline" className="rounded-full">{article.category?.name}</Badge>
+                    <div className="mt-1 font-medium">{article.title}</div>
+                  </div>
+                </Link>
               ))}
+              {results.articles.length === 0 && (
+                <div className="text-xs text-muted-foreground">No articles match.</div>
+              )}
             </Section>
             <Section title={`Schemes (${results.schemes.length})`}>
               {results.schemes.map((scheme) => (
-                <div key={scheme.slug} className="rounded-lg border border-border p-3">
-                  <div className="text-xs text-muted-foreground">{scheme.ministry}</div>
-                  <div className="mt-1 font-medium">{scheme.name}</div>
-                </div>
+                <Link key={scheme.slug} to="/app/schemes">
+                  <div className="rounded-lg border border-border p-3 hover:bg-accent/40 transition-colors">
+                    <div className="text-xs text-muted-foreground">{scheme.ministry}</div>
+                    <div className="mt-1 font-medium">{scheme.name}</div>
+                  </div>
+                </Link>
               ))}
+              {results.schemes.length === 0 && (
+                <div className="text-xs text-muted-foreground">No schemes match.</div>
+              )}
             </Section>
             <Section title={`Resources (${results.resources.length})`}>
               {results.resources.map((resource) => (
-                <div key={resource.slug} className="rounded-lg border border-border p-3">
-                  <Badge variant="outline" className="rounded-full">{resource.resource_type}</Badge>
-                  <div className="mt-1 font-medium">{resource.title}</div>
-                </div>
+                <Link key={resource.slug} to="/app/resources">
+                  <div className="rounded-lg border border-border p-3 hover:bg-accent/40 transition-colors">
+                    <Badge variant="outline" className="rounded-full">{resource.resource_type}</Badge>
+                    <div className="mt-1 font-medium">{resource.title}</div>
+                  </div>
+                </Link>
               ))}
+              {results.resources.length === 0 && (
+                <div className="text-xs text-muted-foreground">No resources match.</div>
+              )}
             </Section>
           </>
         )}

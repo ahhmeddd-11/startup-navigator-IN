@@ -5,6 +5,9 @@ import { Compass } from "lucide-react";
 import { useArticles } from "@/hooks/use-articles";
 import { useSchemes } from "@/hooks/use-schemes";
 import { useResources } from "@/hooks/use-resources";
+import { useEffect } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { api } from "@/lib/api";
 
 import { ErrorState } from "@/components/shared/error-state";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -15,9 +18,16 @@ export const Route = createFileRoute("/app/recommendations")({
 });
 
 function RecommendationsPage() {
+  const queryClient = useQueryClient();
   const { data: articles = [], isLoading: isLoadingArticles, error: errorArticles, refetch: refetchArticles } = useArticles();
   const { data: schemes = [], isLoading: isLoadingSchemes, error: errorSchemes, refetch: refetchSchemes } = useSchemes();
   const { data: resources = [], isLoading: isLoadingResources, error: errorResources, refetch: refetchResources } = useResources();
+
+  useEffect(() => {
+    void api.post("/api/users/history/", { content_type: "recommendations" })
+      .then(() => queryClient.invalidateQueries({ queryKey: ["user-history"] }))
+      .catch(() => {});
+  }, [queryClient]);
 
   const isLoading = isLoadingArticles || isLoadingSchemes || isLoadingResources;
   const error = errorArticles || errorSchemes || errorResources;

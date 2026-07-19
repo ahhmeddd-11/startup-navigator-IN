@@ -104,7 +104,9 @@ function PricingPage() {
               ))}
             </ul>
             <Button className="mt-6" variant={t.highlighted ? "default" : "outline"} asChild>
-              <Link to="/register">{t.cta}</Link>
+              <Link to={t.cta.toLowerCase().includes("contact") ? "/contact" : "/register"}>
+                {t.cta}
+              </Link>
             </Button>
           </div>
         ))}

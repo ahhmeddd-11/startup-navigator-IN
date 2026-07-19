@@ -81,12 +81,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       confirm_password: password, // Satisfy backend password confirmation validation
     });
     if (res.data?.success && res.data?.data) {
-      // If backend returns tokens directly on register (which users.views RegisterView does)
+      // Backend register response: { success, data: { user: {...}, tokens: { access, refresh } } }
       const tokens = res.data.data.tokens;
+      const userPayload = res.data.data.user ?? res.data.data;
       if (tokens) {
         setTokens(tokens.access, tokens.refresh);
       }
-      setUser(res.data.data);
+      setUser(userPayload);
     }
     return res.data;
   };

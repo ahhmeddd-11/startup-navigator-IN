@@ -282,7 +282,7 @@ class RecentlyViewedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RecentlyViewed
-        fields = ("id", "content_type", "resource", "article", "viewed_at")
+        fields = ("id", "content_type", "resource", "article", "metadata", "viewed_at")
         read_only_fields = ("id", "content_type", "viewed_at")
 
 

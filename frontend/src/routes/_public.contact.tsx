@@ -70,7 +70,7 @@ function ContactPage() {
             </div>
             <div>
               <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Offices</div>
-              <div className="mt-1">Bengaluru · Delhi</div>
+              <div className="mt-1">Bengaluru · Remote</div>
             </div>
           </div>
         </div>

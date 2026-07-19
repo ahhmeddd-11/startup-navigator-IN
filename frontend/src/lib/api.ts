@@ -55,6 +55,18 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
+    // Auth endpoints (login, register) return 401 for invalid credentials.
+    // Do NOT treat those as expired sessions — let the error propagate
+    // to the calling code (login/register handlers) which display it properly.
+    const isAuthEndpoint =
+      originalRequest?.url?.includes("/api/auth/login/") ||
+      originalRequest?.url?.includes("/api/auth/register/") ||
+      originalRequest?.url?.includes("/api/auth/refresh/");
+
+    if (isAuthEndpoint) {
+      return Promise.reject(error);
+    }
+
     // If unauthorized and we haven't already retried this request
     if (error.response?.status === 401 && !originalRequest._retry) {
       if (isRefreshing) {
@@ -119,3 +131,4 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
