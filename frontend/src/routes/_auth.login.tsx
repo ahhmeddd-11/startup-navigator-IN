@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
@@ -82,9 +83,8 @@ function LoginPage() {
               Forgot?
             </Link>
           </div>
-          <Input
+          <PasswordInput
             id="pw"
-            type="password"
             required
             className="mt-1.5"
             value={password}

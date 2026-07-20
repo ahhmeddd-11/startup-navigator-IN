@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
@@ -25,11 +26,11 @@ function ResetPage() {
       >
         <div>
           <Label htmlFor="np">New password</Label>
-          <Input id="np" type="password" required className="mt-1.5" />
+          <PasswordInput id="np" required className="mt-1.5" />
         </div>
         <div>
           <Label htmlFor="cp">Confirm password</Label>
-          <Input id="cp" type="password" required className="mt-1.5" />
+          <PasswordInput id="cp" required className="mt-1.5" />
         </div>
         <Button type="submit" className="w-full">
           Update password

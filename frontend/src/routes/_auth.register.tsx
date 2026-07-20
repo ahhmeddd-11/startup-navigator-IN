@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState, useEffect } from "react";
@@ -91,9 +92,8 @@ function RegisterPage() {
         </div>
         <div>
           <Label htmlFor="pw">Password</Label>
-          <Input
+          <PasswordInput
             id="pw"
-            type="password"
             required
             minLength={8}
             className="mt-1.5"
