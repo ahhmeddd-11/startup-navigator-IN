@@ -62,7 +62,7 @@ Unless explicitly authorized in writing by the author:
 ## 🌐 Live Demo
 
 - **Frontend (Vercel):** https://startup-navigator-in.vercel.app
-- **Backend API (Render):** https://startup-navigator-in.onrender.com/admin/    (You won't be able to access this, unless you have credentials!)
+<!-- - **Backend API (Render):** https://startup-navigator-in.onrender.com/admin/ -->
 - **API Documentation:** https://startup-navigator-in.onrender.com/api/docs/
 - **GitHub Repository:** https://github.com/ahhmeddd-11/startup-navigator-IN
 
